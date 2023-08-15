@@ -7,7 +7,10 @@ const Time = () => {
     return (
         <>
             <h1 className="scroll-m-20 text-6xl font-bold tracking-tight lg:text-8xl">
-                {time.getHours()}:{time.getMinutes()}
+                {time.toLocaleString(language, {
+                    hour: "numeric",
+                    minute: "numeric",
+                })}
             </h1>
             <h2 className="text-md">
                 {time.toLocaleString(language, {
