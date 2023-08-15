@@ -12,7 +12,10 @@
     },
     "web_accessible_resources": ["index.html"],
     "icons": {
-        "48": "icons/48.png"
+        "32": "icons/32.png",
+        "48": "icons/48.png",
+        "96": "icons/96.png",
+        "128": "icons/128.png"
     },
     "permissions": ["storage"]
 }
