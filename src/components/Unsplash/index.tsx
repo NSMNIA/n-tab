@@ -57,6 +57,10 @@ const UnsplashImage = () => {
             <div className="h-full w-full bg-[#000] opacity-20 absolute left-0 top-0 select-none pointer-none z-20" />
             <img
                 src={url || ""}
+                loading="lazy"
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                fetchpriority="high"
                 alt="unsplash"
                 className={cn("h-full w-full object-cover transition-opacity duration-300 ease-in-out opacity-0 z-10", {
                     "opacity-100": loaded,

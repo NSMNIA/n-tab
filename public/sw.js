@@ -21,10 +21,31 @@ self.addEventListener("install", event => {
 
 // Listen for request
 self.addEventListener("fetch", event => {
-    event.respondWith(
-        caches.match(event.request).then(() => {
-            return fetch(event.request).catch(() => caches.match("index.html"));
-        })
+    let request = event.request;
+    const CACHE_DATE = new Date().getDate().toString();
+    if (request.url.indexOf("images.unsplash.com") > -1 || request.url.indexOf("api.unsplash.com") > -1) {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    return caches.open(CACHE_DATE).then(function (cache) {
+                        cache.put(event.request.url, response.clone());
+                        return response;
+                    });
+                })
+                .catch(function () {})
+        );
+    }
+    event.waitUntil(
+        caches.keys().then(keyList =>
+            Promise.all(
+                keyList.map(key => {
+                    if (key === CACHE_NAME) return;
+                    if (CACHE_DATE !== key) {
+                        return caches.delete(key);
+                    }
+                })
+            )
+        )
     );
 });
 

@@ -7,6 +7,12 @@
             content="width=device-width, initial-scale=1.0"
         />
         <title>New tab</title>
+        <link
+            rel="preload"
+            href="./theme.js"
+            as="script"
+            fetchpriority="high"
+        />
         <script src="./theme.js"></script>
         <script>
             if ("serviceWorker" in navigator) {
