@@ -1,24 +1,26 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
 import { buildLink, fetchImages, type Image } from "./api";
 import { cn } from "@/lib/utils";
 import UnsplashCredits from "./credits";
 import { fallbackImages } from "@/fallbackImages";
 
+export const newImages = async () => {
+    const query = localStorage.getItem("unsplash") ?? undefined;
+    await fetchImages(query)
+        .then(images => {
+            localStorage.setItem("images", JSON.stringify(images));
+        })
+        .catch(() => {
+            localStorage.setItem("images", JSON.stringify(fallbackImages));
+        });
+};
+
 const UnsplashImage = () => {
     const [images, setImages] = useState<Image[]>([]);
     const [currentImage, setCurrentImage] = useState<number | null>(null);
     const [loaded, setLoaded] = useState<boolean>(false);
     const [url, setUrl] = useState<string | null>(null);
-
-    const newImages = async () => {
-        await fetchImages()
-            .then(images => {
-                localStorage.setItem("images", JSON.stringify(images));
-            })
-            .catch(() => {
-                localStorage.setItem("images", JSON.stringify(fallbackImages));
-            });
-    };
 
     useEffect(() => {
         if (!localStorage.getItem("images")) {
@@ -38,7 +40,7 @@ const UnsplashImage = () => {
     }, []);
 
     useEffect(() => {
-        const images = localStorage.getItem("images") ? (JSON.parse(localStorage.getItem("images") ?? "[]") as Image[]) : ([] as Image[]);
+        const images = localStorage.getItem("images") ? (JSON.parse(localStorage.getItem("images") ?? "[]") as Image[]) : (fallbackImages as Image[]);
         setImages(images);
         setCurrentImage(Math.floor(Math.random() * (images.length - 1)));
     }, [images.length]);

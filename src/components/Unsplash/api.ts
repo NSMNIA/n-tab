@@ -18,7 +18,7 @@ export const fetchImages = async (query: string | undefined = "abstract"): Promi
     const headers = new Headers({
         Authorization: `Client-ID ${import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY}`,
     });
-    params.set("count", "20");
+    params.set("count", "25");
     params.set("orientation", "landscape");
     params.set("query", query);
     params.set("featured", "true");
