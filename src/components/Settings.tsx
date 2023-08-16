@@ -46,6 +46,8 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
         localStorage.setItem("unsplash", values.unsplash ?? "abstract");
         localStorage.removeItem("images");
         localStorage.removeItem("date");
+        localStorage.removeItem("currentImage");
+        localStorage.removeItem("textColor");
         await newImages();
         window.location.reload();
     };
@@ -89,7 +91,6 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
                                                 <SelectContent>
                                                     <SelectItem value="abstract">Default</SelectItem>
                                                     <SelectItem value="nature">Nature</SelectItem>
-                                                    <SelectItem value="cars">Cars</SelectItem>
                                                     <SelectItem value="architecture">Architecture</SelectItem>
                                                 </SelectContent>
                                             </Select>
