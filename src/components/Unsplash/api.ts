@@ -1,13 +1,5 @@
-type By = "official" | "collections" | "search" | "topics";
-
 export interface Data {
-    by: By;
-    collections: string;
-    featured: boolean;
-    paused?: boolean;
     search: string;
-    topics: string;
-    timeout: number;
 }
 
 export interface Image {
@@ -20,10 +12,7 @@ export interface Image {
     };
 }
 
-// type Config = Pick<Data, "by" | "collections" | "featured" | "search" | "topics">;
-
-export const fetchImages = async (): // { by, collections, featured, topics, search }: Config
-Promise<Image[]> => {
+export const fetchImages = async (query: string | undefined = "abstract"): Promise<Image[]> => {
     const url = `https://api.unsplash.com/photos/random`;
     const params = new URLSearchParams();
     const headers = new Headers({
@@ -31,25 +20,8 @@ Promise<Image[]> => {
     });
     params.set("count", "20");
     params.set("orientation", "landscape");
-    params.set("query", "abstract");
+    params.set("query", query);
     params.set("featured", "true");
-
-    // switch (by) {
-    //     case "collections":
-    //         params.set("collections", collections);
-    //         break;
-
-    //     case "topics":
-    //         params.set("topics", topics);
-    //         params.set("orientation", "landscape");
-    //         break;
-
-    //     case "search":
-    //         params.set("orientation", "landscape");
-    //         if (featured) params.set("featured", "true");
-    //         if (search) params.set("query", search);
-    //         break;
-    // }
 
     const res = await fetch(`${url}?${params}`, { headers, cache: "no-cache" });
     const body = await res.json();
