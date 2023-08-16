@@ -8,6 +8,16 @@
         />
         <title>New tab</title>
         <script src="./theme.js"></script>
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("/sw.js")
+                        .then(reg => console.info(`[${new Date().toISOString()}] [Service Worker]`, reg.scope))
+                        .catch(err => console.error(`[${new Date().toISOString()}] [Service Worker]`, err));
+                });
+            }
+        </script>
     </head>
     <body>
         <div id="NTab"></div>
