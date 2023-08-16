@@ -40,12 +40,12 @@ const UnsplashImage = () => {
     }, []);
 
     useEffect(() => {
-        const images = localStorage.getItem("images") ? (JSON.parse(localStorage.getItem("images") ?? "[]") as Image[]) : (fallbackImages as Image[]);
-        setImages(images);
+        const imagesLocal = localStorage.getItem("images") ? (JSON.parse(localStorage.getItem("images") ?? "[]") as Image[]) : (fallbackImages as Image[]);
+        setImages(imagesLocal);
         const currentImageNumber = localStorage.getItem("currentImage") ? parseInt(localStorage.getItem("currentImage") ?? "0") : 0;
-        setCurrentImage((currentImageNumber + 1) % images.length);
-        localStorage.setItem("currentImage", ((currentImageNumber + 1) % images.length).toString());
-    }, [images.length]);
+        setCurrentImage((currentImageNumber + 1) % imagesLocal.length);
+        localStorage.setItem("currentImage", ((currentImageNumber + 1) % imagesLocal.length).toString());
+    }, []);
 
     useEffect(() => {
         if (currentImage === null) return;
