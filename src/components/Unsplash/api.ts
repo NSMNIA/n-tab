@@ -29,7 +29,7 @@ Promise<Image[]> => {
     const headers = new Headers({
         Authorization: `Client-ID ${import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY}`,
     });
-    params.set("count", "10");
+    params.set("count", "20");
     params.set("orientation", "landscape");
     params.set("query", "abstract");
     params.set("featured", "true");

@@ -1,8 +1,15 @@
 import Time from "@/components/Time";
 // import Search from "@/components/Search";
 import UnsplashImage from "./components/Unsplash";
+import { useEffect } from "react";
 
 const App = () => {
+    useEffect(() => {
+        if (!localStorage.getItem("date")) {
+            localStorage.setItem("date", new Date().toISOString());
+        }
+    }, []);
+
     return (
         <div className="relative h-screen w-screen">
             <UnsplashImage />
