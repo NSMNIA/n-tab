@@ -1,6 +1,5 @@
 const CACHE_NAME = `ntab-1`;
-const images = localStorage.getItem("images") ? JSON.parse(localStorage.getItem("images")) : [];
-const urlsToCache = ["index.html", ...images.map(image => image.url)];
+const urlsToCache = ["index.html"];
 
 // eslint-disable-next-line @typescript-eslint/no-this-alias
 const self = this;
