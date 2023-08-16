@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "./context/ThemeProvider.tsx";
 import TimeProvider from "./context/TimeProvider.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("NTab")!).render(
     <React.StrictMode>
         <ThemeProvider defaultTheme="system">
             <TimeProvider>

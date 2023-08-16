@@ -6,13 +6,13 @@ const Time = () => {
 
     return (
         <>
-            <h1 className="scroll-m-20 text-6xl font-bold tracking-tight lg:text-8xl">
+            <h1 className="scroll-m-20 font-bold tracking-tight text-5xl sm:text-[12vw] leading-none lg:text-9xl">
                 {time.toLocaleString(language, {
                     hour: "numeric",
                     minute: "numeric",
                 })}
             </h1>
-            <h2 className="text-md">
+            <h2 className="text-lg">
                 {time.toLocaleString(language, {
                     weekday: "long",
                     month: "long",
