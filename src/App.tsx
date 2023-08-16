@@ -1,13 +1,16 @@
 import Time from "@/components/Time";
 // import Search from "@/components/Search";
 import UnsplashImage from "./components/Unsplash";
-import { useEffect } from "react";
-import Settings from "./components/Settings";
+import { lazy, useEffect } from "react";
+const Settings = lazy(() => import("./components/Settings"));
 
 const App = () => {
     useEffect(() => {
         if (!localStorage.getItem("date")) {
             localStorage.setItem("date", new Date().toISOString());
+        }
+        if (!localStorage.getItem("unsplash")) {
+            localStorage.setItem("unsplash", "abstract");
         }
     }, []);
 

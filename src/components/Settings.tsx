@@ -37,13 +37,13 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            unsplash: localStorage.getItem("unsplash") ?? "",
+            unsplash: localStorage.getItem("unsplash") ?? "abstract",
         },
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values.unsplash);
-        localStorage.setItem("unsplash", values.unsplash ?? "");
+        localStorage.setItem("unsplash", values.unsplash ?? "abstract");
         localStorage.removeItem("images");
         localStorage.removeItem("date");
         await newImages();
@@ -87,7 +87,7 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
                                                     <SelectValue placeholder="Topic" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="">Default</SelectItem>
+                                                    <SelectItem value="abstract">Default</SelectItem>
                                                     <SelectItem value="nature">Nature</SelectItem>
                                                     <SelectItem value="cars">Cars</SelectItem>
                                                     <SelectItem value="architecture">Architecture</SelectItem>
