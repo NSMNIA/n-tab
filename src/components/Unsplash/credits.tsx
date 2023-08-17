@@ -6,14 +6,14 @@ export const UTM = "?utm_source=Start&utm_medium=referral&utm_campaign=api-credi
 const UnsplashCredits: FC<Image["credit"]> = ({ imageLink, userLink, userName }) => {
     return (
         <div
-            className="absolute bottom-2 left-2 text-sm z-30 text-muted-foreground"
+            className="absolute bottom-2 left-2 text-sm z-30 opacity-60 text-dynamic hover:opacity-100 transition-opacity duration-300 ease-in-out"
             key={`${imageLink}_${userLink}_${userName}`}
         >
             <Button
                 asChild
                 variant={"link"}
                 size="noPadding"
-                className="text-muted-foreground"
+                className="text-inherit"
             >
                 <a
                     href={imageLink + UTM}
@@ -27,7 +27,7 @@ const UnsplashCredits: FC<Image["credit"]> = ({ imageLink, userLink, userName })
                 asChild
                 variant={"link"}
                 size="noPadding"
-                className="text-muted-foreground"
+                className="text-inherit"
             >
                 <a
                     href={userLink + UTM}
@@ -41,7 +41,7 @@ const UnsplashCredits: FC<Image["credit"]> = ({ imageLink, userLink, userName })
                 asChild
                 variant={"link"}
                 size="noPadding"
-                className="text-muted-foreground"
+                className="text-inherit"
             >
                 <a
                     href="https://unsplash.com/"

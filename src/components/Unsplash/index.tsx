@@ -97,20 +97,6 @@ const UnsplashImage = () => {
                 onLoad={() => setLoaded(true)}
             />
             {url && currentImage !== null && <UnsplashCredits {...images?.[currentImage]?.credit} />}
-            {/* {images.length > 1 && currentImage !== null && (
-                <div className="absolute bottom-2 right-2 text-sm z-30 text-muted-foreground">
-                    <Button
-                        variant={"link"}
-                        size="noPadding"
-                        className="text-muted-foreground"
-                        onClick={() => {
-                            setCurrentImage((currentImage + 1) % images.length);
-                        }}
-                    >
-                        <ArrowRightIcon />
-                    </Button>
-                </div>
-            )} */}
         </div>
     );
 };

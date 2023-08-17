@@ -78,4 +78,12 @@
     body {
         @apply bg-background text-foreground;
     }
+
+    .text-dynamic {
+        color: var(--dynamic-color, white);
+    }
+
+    .bg-dynamic {
+        background-color: var(--dynamic-color, white);
+    }
 }

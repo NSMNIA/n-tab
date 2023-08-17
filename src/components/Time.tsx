@@ -1,29 +1,15 @@
 import { useTime } from "@/hooks/useTime";
-import { useEffect, useState } from "react";
 
 const Time = () => {
     const language = Intl.DateTimeFormat().resolvedOptions().locale;
     const time = useTime();
-    const [textColor, setTextColor] = useState<string>("white");
-    useEffect(() => {
-        const textColor = localStorage.getItem("textColor") ?? "white";
-        if (!document.querySelector("meta[name='theme-color']")) {
-            const meta = document.createElement("meta");
-            meta.name = "theme-color";
-            meta.content = textColor;
-            document.head.appendChild(meta);
-        } else {
-            document.querySelector("meta[name='theme-color']")?.setAttribute("content", textColor);
-        }
-        setTextColor(textColor);
-    }, []);
 
     return (
         <>
             <h1
                 className="scroll-m-20 font-bold tracking-tight text-5xl sm:text-[12vw] leading-none lg:text-9xl"
                 style={{
-                    color: textColor,
+                    color: "var(--dynamic-color, white)",
                 }}
             >
                 {time.toLocaleString(language, {
@@ -34,7 +20,7 @@ const Time = () => {
             <h2
                 className="text-lg font-semibold"
                 style={{
-                    color: textColor,
+                    color: "var(--dynamic-color, white)",
                 }}
             >
                 {time.toLocaleString(language, {
