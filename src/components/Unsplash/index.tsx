@@ -38,16 +38,12 @@ const UnsplashImage = () => {
         img.src = newImage;
         img.onload = async () => {
             const dominantColor = colorThief.getColor(img);
-            if (dominantColor[0] < 50 && dominantColor[1] < 50 && dominantColor[2] < 50) {
-                localStorage.setItem("textColor", "white");
-                return;
-            }
             const pastelColor = generatePastelColor(dominantColor);
             localStorage.setItem("textColor", pastelColor as string);
+            img.remove();
         };
-        const classes = ["absolute", "top-0", "left-0", "w-0", "h-0", "overflow-hidden"];
+        const classes = ["fixed", "top-0", "left-0", "overflow-hidden", "invisible", "z-0"];
         img.classList.add(...classes);
-        img.style.visibility = "hidden";
         img.loading = "lazy";
         img.crossOrigin = "Anonymous";
         document.body.appendChild(img);
@@ -88,7 +84,7 @@ const UnsplashImage = () => {
 
     return (
         <div className="absolute h-full w-full top-0 left-0">
-            <div className="h-full w-full bg-[#000] opacity-20 absolute left-0 top-0 select-none pointer-none z-20" />
+            <div className="h-full w-full bg-[#000] opacity-40 absolute left-0 top-0 select-none pointer-none z-20" />
             <img
                 src={url || ""}
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -98,7 +94,7 @@ const UnsplashImage = () => {
                 className={cn("h-full w-full object-cover transition-opacity duration-500 ease-in-out opacity-0 z-10", {
                     "opacity-100": loaded,
                 })}
-                onLoad={() => setTimeout(() => setLoaded(true), 100)}
+                onLoad={() => setLoaded(true)}
             />
             {url && currentImage !== null && <UnsplashCredits {...images?.[currentImage]?.credit} />}
             {/* {images.length > 1 && currentImage !== null && (

@@ -91,6 +91,7 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
                                                 <SelectContent>
                                                     <SelectItem value="abstract">Default</SelectItem>
                                                     <SelectItem value="nature">Nature</SelectItem>
+                                                    <SelectItem value="wallpapers">Wallpapers</SelectItem>
                                                     <SelectItem value="architecture">Architecture</SelectItem>
                                                 </SelectContent>
                                             </Select>

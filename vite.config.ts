@@ -10,6 +10,9 @@ export default defineConfig({
         emptyOutDir: true,
         outDir: resolve(__dirname, "dist"),
     },
+    server: {
+        port: 3000,
+    },
     resolve: {
         alias: {
             "@": resolve(__dirname, "./src"),

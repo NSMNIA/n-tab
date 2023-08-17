@@ -7,6 +7,14 @@ const Time = () => {
     const [textColor, setTextColor] = useState<string>("white");
     useEffect(() => {
         const textColor = localStorage.getItem("textColor") ?? "white";
+        if (!document.querySelector("meta[name='theme-color']")) {
+            const meta = document.createElement("meta");
+            meta.name = "theme-color";
+            meta.content = textColor;
+            document.head.appendChild(meta);
+        } else {
+            document.querySelector("meta[name='theme-color']")?.setAttribute("content", textColor);
+        }
         setTextColor(textColor);
     }, []);
 
