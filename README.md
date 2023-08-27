@@ -2,9 +2,7 @@
 
 # NTab
 
-<p>
-  <img alt="NTab latest version" src="https://img.shields.io/github/package-json/v/NSMNIA/n-tab" />
-</p>
+![GitHub package.json version (subfolder of monorepo)](https://img.shields.io/github/package-json/v/NSMNIA/n-tab) ![GitHub](https://img.shields.io/github/license/NSMNIA/n-tab)
 
 An extension for Firefox that opens a new tab with a random image from [Unsplash](https://unsplash.com/). It also shows the time and date with a dynamic text color based on the image.
 
@@ -12,12 +10,6 @@ An extension for Firefox that opens a new tab with a random image from [Unsplash
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <!-- <td valign="center">
-      <a align="center" href="https://chrome.google.com/webstore/detail/automa/infppggnoaenmfagbfknfkancpbljcca">
-        <img src="https://user-images.githubusercontent.com/22908993/166417152-f870bfbd-1770-4c28-b69d-a7303aebc9a6.png" alt="Chrome web store" />
-        <p align="center">Chrome Web Store</p>
-      </a>
-    </td> -->
     <td valign="center">
       <a href="https://addons.mozilla.org/en-US/firefox/addon/ntab/">
         <img src="https://user-images.githubusercontent.com/22908993/166417727-3481fef4-00e5-4cf0-bb03-27fb880d993c.png" alt="Firefox add-ons" />
@@ -26,14 +18,6 @@ An extension for Firefox that opens a new tab with a random image from [Unsplash
     </td>
   </tr>
 </table>
-
-## Contributors
-
-Thanks to everyone who has submitted issues, made suggestions, and generally helped make this a better project.
-
-<a href="https://github.com/NSMNIA/n-tab/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NSMNIA/n-tab" />
-</a>
 
 ## License
 
