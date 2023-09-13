@@ -1,4 +1,3 @@
-import { utcToZonedTime } from "date-fns-tz";
 import { createContext, useEffect, useState } from "react";
 
 type Time = {
@@ -8,7 +7,7 @@ type Time = {
 
 const getTime = (timeZone: string | null = null): Time => {
     const absolute = new Date();
-    const zoned = timeZone ? utcToZonedTime(absolute, timeZone) : absolute;
+    const zoned = timeZone ? new Date(absolute.toLocaleString("en-US", { timeZone })) : absolute;
     return { absolute, zoned };
 };
 
