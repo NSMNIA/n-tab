@@ -72,7 +72,7 @@
     }
 
     ::selection {
-        @apply bg-foreground/50;
+        @apply bg-dynamic text-white;
     }
 
     body {

@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { newImages } from "./Unsplash";
+import { Slider } from "./ui/slider";
 
 export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<React.SetStateAction<boolean>>; button: React.MutableRefObject<HTMLButtonElement | null> }) => {
     const portalRef = useRef<HTMLDivElement>(null);
@@ -32,23 +33,27 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
 
     const formSchema = z.object({
         unsplash: z.string().optional(),
+        blur: z.array(z.number()).optional(),
     });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             unsplash: localStorage.getItem("unsplash") ?? "abstract",
+            blur: [parseInt(localStorage.getItem("blur") ?? "0")],
         },
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        console.log(values.unsplash);
-        localStorage.setItem("unsplash", values.unsplash ?? "abstract");
-        localStorage.removeItem("images");
-        localStorage.removeItem("date");
-        localStorage.removeItem("currentImage");
-        localStorage.removeItem("textColor");
-        await newImages();
+        localStorage.setItem("blur", values.blur![0].toString());
+        if (values.unsplash !== localStorage.getItem("unsplash")) {
+            localStorage.setItem("unsplash", values.unsplash ?? "abstract");
+            localStorage.removeItem("images");
+            localStorage.removeItem("date");
+            localStorage.removeItem("currentImage");
+            localStorage.removeItem("textColor");
+            await newImages();
+        }
         window.location.reload();
     };
 
@@ -74,33 +79,55 @@ export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<Rea
                             className="flex flex-col justify-between h-full"
                             onSubmit={form.handleSubmit(onSubmit)}
                         >
-                            <FormField
-                                control={form.control}
-                                name="unsplash"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Background</FormLabel>
-                                        <FormControl>
-                                            <Select
-                                                onValueChange={field.onChange}
-                                                defaultValue={field.value}
-                                            >
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Topic" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="abstract">Default</SelectItem>
-                                                    <SelectItem value="nature">Nature</SelectItem>
-                                                    <SelectItem value="wallpapers">Wallpapers</SelectItem>
-                                                    <SelectItem value="architecture">Architecture</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                        </FormControl>
-                                        <FormDescription>Topic for Unsplash photos</FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+                            <div className="flex flex-col gap-5">
+                                <FormField
+                                    control={form.control}
+                                    name="unsplash"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Background</FormLabel>
+                                            <FormControl>
+                                                <Select
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value}
+                                                >
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Topic" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="abstract">Default</SelectItem>
+                                                        <SelectItem value="nature">Nature</SelectItem>
+                                                        <SelectItem value="wallpapers">Wallpapers</SelectItem>
+                                                        <SelectItem value="architecture">Architecture</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </FormControl>
+                                            <FormDescription>Topic for Unsplash photos</FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="blur"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Blur ({field.value![0]}px)</FormLabel>
+                                            <FormControl>
+                                                <Slider
+                                                    min={0}
+                                                    max={40}
+                                                    step={1}
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={[parseInt(field.value![0].toString())]}
+                                                />
+                                            </FormControl>
+                                            <FormDescription>Blur the background image</FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
                             <Button type="submit">Change settings</Button>
                         </form>
                     </Form>
