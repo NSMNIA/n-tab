@@ -64,11 +64,33 @@ module.exports = {
                     from: { opacity: 0 },
                     to: { opacity: 1 },
                 },
+                "un-blur": {
+                    from: {
+                        filter: "blur(42px)",
+                        scale: 1.2,
+                        opacity: 0,
+                    },
+                    to: {
+                        filter: "blur(0)",
+                        scale: 1,
+                        opacity: 1,
+                    },
+                },
+                "thumbnail-blur": {
+                    from: {
+                        opacity: 1,
+                    },
+                    to: {
+                        opacity: 0,
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
                 "fade-in": "fade-in 0.3s ease-out",
+                "un-blur": "un-blur 800ms cubic-bezier(.4,0,.2,1)",
+                "thumbnail-blur": "thumbnail-blur 800ms cubic-bezier(.4,0,.2,1)",
             },
         },
     },

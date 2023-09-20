@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { Image } from "./api";
+import { Image } from "./utils/api";
 import { Button } from "../ui/button";
 export const UTM = "?utm_source=Start&utm_medium=referral&utm_campaign=api-credit";
 

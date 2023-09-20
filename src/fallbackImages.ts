@@ -1,4 +1,4 @@
-import { Image } from "./components/Unsplash/api";
+import { Image } from "./components/Unsplash/utils/api";
 
 export const fallbackImages: Image[] = [
     {

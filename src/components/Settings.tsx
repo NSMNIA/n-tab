@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { newImages } from "./Unsplash";
 import { Slider } from "./ui/slider";
+import { newImages } from "./Unsplash/utils/images";
 
 export const SettingsPanel = ({ setOpen, button }: { setOpen: React.Dispatch<React.SetStateAction<boolean>>; button: React.MutableRefObject<HTMLButtonElement | null> }) => {
     const portalRef = useRef<HTMLDivElement>(null);
