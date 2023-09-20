@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "NTab",
     "short_name": "NTab",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "NTab is a new tab page that is simple and easy to use.",
     "chrome_settings_overrides": {
         "homepage": "index.html"

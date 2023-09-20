@@ -67,21 +67,21 @@ module.exports = {
                 "un-blur": {
                     from: {
                         filter: "blur(42px)",
-                        scale: 1.2,
-                        opacity: 0,
+                        scale: "1.2",
+                        opacity: "0",
                     },
                     to: {
                         filter: "blur(0)",
-                        scale: 1,
-                        opacity: 1,
+                        scale: "1",
+                        opacity: "1",
                     },
                 },
                 "thumbnail-blur": {
                     from: {
-                        opacity: 1,
+                        opacity: "1",
                     },
                     to: {
-                        opacity: 0,
+                        opacity: "0",
                     },
                 },
             },
