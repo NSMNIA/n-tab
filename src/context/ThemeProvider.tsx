@@ -24,8 +24,8 @@ export function ThemeProvider({ children, defaultTheme = "system", storageKey = 
 
     useEffect(() => {
         const root = window.document.documentElement;
-        const textColor = localStorage.getItem("textColor");
-        if (textColor) root.style.setProperty("--dynamic-color", textColor);
+        const dynamicColor = localStorage.getItem("dynamicColor");
+        if (dynamicColor) root.style.setProperty("--dynamic-color", dynamicColor);
     }, []);
 
     useEffect(() => {

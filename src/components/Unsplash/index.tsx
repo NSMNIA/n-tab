@@ -70,8 +70,11 @@ const UnsplashImage = () => {
                 src={url || ""}
                 fetch-priority="high"
                 alt="Unsplash background"
-                className={cn(`h-full w-full object-cover z-10 filter opacity-0 scale-[1.2]`, {
-                    "animate-un-blur opacity-1 scale-[1]": loaded,
+                className={cn(`h-full w-full object-cover z-10 filter opacity-0`, {
+                    "animate-un-blur opacity-1 scale-[1]": loaded && blur === 0,
+                    "animate-un-blur-with-blur opacity-1 scale-[1.1]": loaded && blur > 0,
+                    "scale-[1.2]": blur === 0,
+                    "scale-[1.3]": blur > 0,
                 })}
                 onLoad={() => setLoaded(true)}
             />

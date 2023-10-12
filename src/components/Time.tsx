@@ -5,7 +5,7 @@ const Time = () => {
     const time = useTime();
 
     return (
-        <>
+        <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] text-center flex flex-col gap-3 p-4 z-30">
             <h1
                 className="scroll-m-20 font-bold tracking-tight text-5xl sm:text-[12vw] leading-none lg:text-9xl"
                 style={{
@@ -29,7 +29,7 @@ const Time = () => {
                     day: "numeric",
                 })}
             </h2>
-        </>
+        </div>
     );
 };
 
