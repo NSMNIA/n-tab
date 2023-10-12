@@ -86,4 +86,8 @@
     .bg-dynamic {
         background-color: var(--dynamic-color, white);
     }
+
+    .border-dynamic {
+        border-color: var(--dynamic-color, white);
+    }
 }

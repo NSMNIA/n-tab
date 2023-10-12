@@ -71,8 +71,20 @@ module.exports = {
                         opacity: "0",
                     },
                     to: {
-                        filter: "blur(0)",
+                        filter: "var(--tw-blur, blur(0))",
                         scale: "1",
+                        opacity: "1",
+                    },
+                },
+                "un-blur-with-blur": {
+                    from: {
+                        filter: "blur(42px)",
+                        scale: "1.3",
+                        opacity: "0",
+                    },
+                    to: {
+                        filter: "var(--tw-blur, blur(0))",
+                        scale: "1.1",
                         opacity: "1",
                     },
                 },

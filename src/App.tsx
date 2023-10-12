@@ -18,10 +18,8 @@ const App = () => {
     return (
         <div className="relative h-screen w-screen bg-black">
             <UnsplashImage />
-            <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] text-center flex flex-col gap-3 p-4 z-30">
-                <Time />
-                <TopSites />
-            </div>
+            <Time />
+            <TopSites />
             {/* <div className="absolute left-[50%] bottom-[5rem] translate-x-[-50%]">
                 <Search />
             </div> */}
