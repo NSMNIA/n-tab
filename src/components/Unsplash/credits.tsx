@@ -6,7 +6,7 @@ export const UTM = "?utm_source=Start&utm_medium=referral&utm_campaign=api-credi
 const UnsplashCredits: FC<Image["credit"]> = ({ imageLink, userLink, userName }) => {
     return (
         <div
-            className="absolute bottom-2 left-2 text-sm z-30 opacity-60 text-dynamic hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            className="absolute bottom-2 left-2 text-sm z-30 opacity-60 text-primary hover:opacity-100 transition-opacity duration-300 ease-in-out"
             key={`${imageLink}_${userLink}_${userName}`}
         >
             <Button

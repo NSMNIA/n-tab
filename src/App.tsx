@@ -15,6 +15,12 @@ const App = () => {
         }
     }, []);
 
+    useEffect(() => {
+        const root = window.document.documentElement;
+        const primaryColor = localStorage.getItem("primaryColor");
+        if (primaryColor) root.style.setProperty("--primary", primaryColor);
+    }, []);
+
     return (
         <div className="relative h-screen w-screen bg-black">
             <UnsplashImage />

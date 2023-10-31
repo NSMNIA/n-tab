@@ -36,10 +36,10 @@ const TopSites: React.FC = () => {
                 <a
                     key={idx}
                     href={site.url}
-                    className={cn(`flex flex-col items-center gap-2 w-20 overflow-hidden hover:text-dynamic hover:underline`)}
+                    className={cn(`flex flex-col items-center gap-2 w-20 overflow-hidden hover:text-primary hover:underline`)}
                 >
                     {site.favicon && (
-                        <div className="flex w-12 h-12 rounded-full bg-dynamic items-center justify-center">
+                        <div className="flex w-12 h-12 rounded-full bg-primary items-center justify-center">
                             <img
                                 src={site.favicon}
                                 alt={site.title}
@@ -51,7 +51,7 @@ const TopSites: React.FC = () => {
                             />
                         </div>
                     )}
-                    <span className="text-xs text-dynamic overflow-hidden truncate w-full">{site.title}</span>
+                    <span className="text-xs text-primary overflow-hidden truncate w-full">{site.title}</span>
                 </a>
             ))}
         </div>

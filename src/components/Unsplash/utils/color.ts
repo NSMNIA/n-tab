@@ -4,7 +4,7 @@ export function generatePastelColor(rgb: number[]) {
     const b = Math.floor((rgb[2] + 255) / 2);
     const hsl = RGBToHSL({ r, g, b });
     const [h, s, l] = hsl;
-    return `hsl(${h},${s}%,${l < 70 ? l + 10 : l}%)`;
+    return `${h} ${s}% ${l < 70 ? l + 10 : l}%`;
 }
 
 const RGBToHSL = ({ r, g, b }: { r: number; g: number; b: number }) => {
