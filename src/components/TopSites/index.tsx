@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import { cn } from "@/lib/utils";
-import React, { useState, useEffect } from "react";
+import { cn } from '@/lib/utils';
+import React, { useState, useEffect } from 'react';
 
 type TopSite = {
     type: string;
@@ -11,12 +11,14 @@ type TopSite = {
 };
 
 const TopSites: React.FC = () => {
-    const showTopSites = typeof window !== "undefined" && localStorage.getItem("showTopSites") === "true";
+    const showTopSites =
+        typeof window !== 'undefined' &&
+        localStorage.getItem('showTopSites') === 'true';
     const [topSites, setTopSites] = useState<TopSite[]>([]);
 
     useEffect(() => {
         // @ts-ignore - Browser API (is available)
-        if (typeof browser === "undefined") return;
+        if (typeof browser === 'undefined') return;
         // @ts-ignore - Browser API (is available)
         browser.topSites
             .get({
@@ -36,7 +38,9 @@ const TopSites: React.FC = () => {
                 <a
                     key={idx}
                     href={site.url}
-                    className={cn(`flex flex-col items-center gap-2 w-20 overflow-hidden hover:text-primary hover:underline`)}
+                    className={cn(
+                        `flex flex-col items-center gap-2 w-20 overflow-hidden hover:text-primary hover:underline`
+                    )}
                 >
                     {site.favicon && (
                         <div className="flex w-12 h-12 rounded-full bg-primary items-center justify-center">
@@ -45,13 +49,15 @@ const TopSites: React.FC = () => {
                                 alt={site.title}
                                 className="w-8 h-8 rounded-md "
                                 style={{
-                                    filter: "gray(1)",
-                                    mixBlendMode: "multiply",
+                                    filter: 'gray(1)',
+                                    mixBlendMode: 'multiply',
                                 }}
                             />
                         </div>
                     )}
-                    <span className="text-xs text-primary overflow-hidden truncate w-full">{site.title}</span>
+                    <span className="text-xs text-primary overflow-hidden truncate w-full">
+                        {site.title}
+                    </span>
                 </a>
             ))}
         </div>

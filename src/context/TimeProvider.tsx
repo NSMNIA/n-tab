@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 
 type Time = {
     absolute: Date;
@@ -7,7 +7,9 @@ type Time = {
 
 const getTime = (timeZone: string | null = null): Time => {
     const absolute = new Date();
-    const zoned = timeZone ? new Date(absolute.toLocaleString("en-US", { timeZone })) : absolute;
+    const zoned = timeZone
+        ? new Date(absolute.toLocaleString('en-US', { timeZone }))
+        : absolute;
     return { absolute, zoned };
 };
 

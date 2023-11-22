@@ -12,18 +12,22 @@ export interface Image {
     };
 }
 
-export const fetchImages = async (query: string | undefined = "abstract"): Promise<Image[]> => {
+export const fetchImages = async (
+    query: string | undefined = 'abstract'
+): Promise<Image[]> => {
     const url = `https://api.unsplash.com/photos/random`;
     const params = new URLSearchParams();
     const headers = new Headers({
-        Authorization: `Client-ID ${import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY}`,
+        Authorization: `Client-ID ${
+            import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY
+        }`,
     });
-    params.set("count", "25");
-    params.set("orientation", "landscape");
-    params.set("query", query);
-    params.set("featured", "true");
+    params.set('count', '25');
+    params.set('orientation', 'landscape');
+    params.set('query', query);
+    params.set('featured', 'true');
 
-    const res = await fetch(`${url}?${params}`, { headers, cache: "no-cache" });
+    const res = await fetch(`${url}?${params}`, { headers, cache: 'no-cache' });
     const body = await res.json();
     return body.map(
         (item: {
@@ -56,8 +60,11 @@ export const fetchImages = async (query: string | undefined = "abstract"): Promi
 
 export const buildLink = (src: string): string => {
     const url = new URL(src);
-    url.searchParams.set("q", "85");
-    url.searchParams.set("w", String(calculateWidth(window.innerWidth, window.devicePixelRatio)));
+    url.searchParams.set('q', '85');
+    url.searchParams.set(
+        'w',
+        String(calculateWidth(window.innerWidth, window.devicePixelRatio))
+    );
     return String(url);
 };
 
