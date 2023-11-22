@@ -1,15 +1,36 @@
-import { Button } from "./ui/button";
-import { SettingsIcon } from "lucide-react";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Slider } from "./ui/slider";
-import { newImages } from "./Unsplash/utils/images";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
+import { Button } from './ui/button';
+import { SettingsIcon } from 'lucide-react';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from './ui/form';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from './ui/select';
+import { Slider } from './ui/slider';
+import { newImages } from './Unsplash/utils/images';
+import {
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from './ui/dialog';
+import { Switch } from './ui/switch';
+import { Label } from './ui/label';
 
 const Settings = () => {
     const formSchema = z.object({
@@ -21,21 +42,24 @@ const Settings = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            unsplash: localStorage.getItem("unsplash") ?? "abstract",
-            blur: [parseInt(localStorage.getItem("blur") ?? "0")],
-            showTopSites: localStorage.getItem("showTopSites") === "true",
+            unsplash: localStorage.getItem('unsplash') ?? 'abstract',
+            blur: [parseInt(localStorage.getItem('blur') ?? '0')],
+            showTopSites: localStorage.getItem('showTopSites') === 'true',
         },
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        localStorage.setItem("blur", values.blur![0].toString());
-        localStorage.setItem("showTopSites", values.showTopSites?.toString() ?? "false");
-        if (values.unsplash !== localStorage.getItem("unsplash")) {
-            localStorage.setItem("unsplash", values.unsplash ?? "abstract");
-            localStorage.removeItem("images");
-            localStorage.removeItem("date");
-            localStorage.removeItem("currentImage");
-            localStorage.removeItem("primaryColor");
+        localStorage.setItem('blur', values.blur![0].toString());
+        localStorage.setItem(
+            'showTopSites',
+            values.showTopSites?.toString() ?? 'false'
+        );
+        if (values.unsplash !== localStorage.getItem('unsplash')) {
+            localStorage.setItem('unsplash', values.unsplash ?? 'abstract');
+            localStorage.removeItem('images');
+            localStorage.removeItem('date');
+            localStorage.removeItem('currentImage');
+            localStorage.removeItem('primaryColor');
             await newImages();
         }
         window.location.reload();
@@ -44,11 +68,8 @@ const Settings = () => {
     return (
         <Dialog>
             <div className="absolute top-2 left-2 z-40 text-muted-foreground">
-                <DialogTrigger>
-                    <Button
-                        size={"icon"}
-                        variant={"ghostSettings"}
-                    >
+                <DialogTrigger asChild>
+                    <Button size={'icon'} variant={'ghostSettings'}>
                         <SettingsIcon height={18} />
                     </Button>
                 </DialogTrigger>
@@ -75,14 +96,24 @@ const Settings = () => {
                                                     <SelectValue placeholder="Topic" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="abstract">Default</SelectItem>
-                                                    <SelectItem value="nature">Nature</SelectItem>
-                                                    <SelectItem value="wallpapers">Wallpapers</SelectItem>
-                                                    <SelectItem value="architecture">Architecture</SelectItem>
+                                                    <SelectItem value="abstract">
+                                                        Default
+                                                    </SelectItem>
+                                                    <SelectItem value="nature">
+                                                        Nature
+                                                    </SelectItem>
+                                                    <SelectItem value="wallpapers">
+                                                        Wallpapers
+                                                    </SelectItem>
+                                                    <SelectItem value="architecture">
+                                                        Architecture
+                                                    </SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>
-                                        <FormDescription>Topic for Unsplash photos</FormDescription>
+                                        <FormDescription>
+                                            Topic for Unsplash photos
+                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -92,17 +123,25 @@ const Settings = () => {
                                 name="blur"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Blur ({field.value![0]}px)</FormLabel>
+                                        <FormLabel>
+                                            Blur ({field.value![0]}px)
+                                        </FormLabel>
                                         <FormControl>
                                             <Slider
                                                 min={0}
                                                 max={40}
                                                 step={1}
                                                 onValueChange={field.onChange}
-                                                defaultValue={[parseInt(field.value![0].toString())]}
+                                                defaultValue={[
+                                                    parseInt(
+                                                        field.value![0].toString()
+                                                    ),
+                                                ]}
                                             />
                                         </FormControl>
-                                        <FormDescription>Blur the background image</FormDescription>
+                                        <FormDescription>
+                                            Blur the background image
+                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -117,14 +156,21 @@ const Settings = () => {
                                         <FormControl>
                                             <div className="flex items-center space-x-2">
                                                 <Switch
-                                                    id={"showTopSites"}
+                                                    id={'showTopSites'}
                                                     checked={field.value}
-                                                    onCheckedChange={field.onChange}
+                                                    onCheckedChange={
+                                                        field.onChange
+                                                    }
                                                 />
-                                                <Label htmlFor="showTopSites">Show top sites</Label>
+                                                <Label htmlFor="showTopSites">
+                                                    Show top sites
+                                                </Label>
                                             </div>
                                         </FormControl>
-                                        <FormDescription>Show your top sites on the bottom of the screen</FormDescription>
+                                        <FormDescription>
+                                            Show your top sites on the bottom of
+                                            the screen
+                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
