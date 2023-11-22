@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
-import { buildLink, type Image } from "./utils/api";
-import { cn } from "@/lib/utils";
-import UnsplashCredits from "./credits";
-import { fallbackImages } from "@/fallbackImages";
-import { newImages, prefetchNewImage } from "./utils/images";
+import { useEffect, useState } from 'react';
+import { buildLink, type Image } from './utils/api';
+import { cn } from '@/lib/utils';
+import UnsplashCredits from './credits';
+import { fallbackImages } from '@/fallbackImages';
+import { newImages, prefetchNewImage } from './utils/images';
 
 const UnsplashImage = () => {
     const [images, setImages] = useState<Image[]>([]);
     const [currentImage, setCurrentImage] = useState<number | null>(null);
     const [loaded, setLoaded] = useState<boolean>(false);
     const [url, setUrl] = useState<string | null>(null);
-    const blur = window !== undefined ? parseInt(localStorage.getItem("blur") ?? "0") : 0;
-    const [currentThumbnail, setCurrentThumbnail] = useState<string | null>(window !== undefined ? localStorage.getItem("thumbnail") ?? "" : "");
+    const blur =
+        window !== undefined
+            ? parseInt(localStorage.getItem('blur') ?? '0')
+            : 0;
+    const [currentThumbnail, setCurrentThumbnail] = useState<string | null>(
+        window !== undefined ? localStorage.getItem('thumbnail') ?? '' : ''
+    );
 
     useEffect(() => {
         if (!loaded) return;
@@ -22,16 +27,16 @@ const UnsplashImage = () => {
     }, [loaded]);
 
     useEffect(() => {
-        if (!localStorage.getItem("images")) {
+        if (!localStorage.getItem('images')) {
             newImages();
         }
-        const date = new Date(localStorage.getItem("date")!);
+        const date = new Date(localStorage.getItem('date')!);
         const today = new Date();
         if (date.getDate() !== today.getDate()) {
-            localStorage.setItem("date", today.toISOString());
+            localStorage.setItem('date', today.toISOString());
             newImages();
         } else {
-            const images = JSON.parse(localStorage.getItem("images") ?? "[]");
+            const images = JSON.parse(localStorage.getItem('images') ?? '[]');
             if (images.length === 0) {
                 newImages();
             }
@@ -39,9 +44,13 @@ const UnsplashImage = () => {
     }, []);
 
     useEffect(() => {
-        const imagesLocal = localStorage.getItem("images") ? (JSON.parse(localStorage.getItem("images") ?? "[]") as Image[]) : (fallbackImages as Image[]);
+        const imagesLocal = localStorage.getItem('images')
+            ? (JSON.parse(localStorage.getItem('images') ?? '[]') as Image[])
+            : (fallbackImages as Image[]);
         setImages(imagesLocal);
-        const currentImageNumber = localStorage.getItem("currentImage") ? parseInt(localStorage.getItem("currentImage") ?? "0") : 0;
+        const currentImageNumber = localStorage.getItem('currentImage')
+            ? parseInt(localStorage.getItem('currentImage') ?? '0')
+            : 0;
         setCurrentImage(currentImageNumber % imagesLocal.length);
         prefetchNewImage(imagesLocal, currentImageNumber);
     }, []);
@@ -59,26 +68,38 @@ const UnsplashImage = () => {
             {currentThumbnail && (
                 <img
                     src={currentThumbnail}
-                    className={cn("absolute inset-0 h-full w-full object-cover z-20 opacity-100", {
-                        "animate-thumbnail-blur opacity-0": loaded,
-                    })}
+                    className={cn(
+                        'absolute inset-0 h-full w-full object-cover z-20 opacity-100',
+                        {
+                            'animate-thumbnail-blur opacity-0': loaded,
+                        }
+                    )}
                     alt="Unsplash background placeholder"
                 />
             )}
             <img
-                style={{ "--tw-blur": `blur(${blur}px)` } as React.CSSProperties}
-                src={url || ""}
+                style={
+                    { '--tw-blur': `blur(${blur}px)` } as React.CSSProperties
+                }
+                src={url || ''}
                 fetch-priority="high"
                 alt="Unsplash background"
-                className={cn(`h-full w-full object-cover z-10 filter opacity-0`, {
-                    "animate-un-blur opacity-1 scale-[1]": loaded && blur === 0,
-                    "animate-un-blur-with-blur opacity-1 scale-[1.1]": loaded && blur > 0,
-                    "scale-[1.2]": blur === 0,
-                    "scale-[1.3]": blur > 0,
-                })}
+                className={cn(
+                    `h-full w-full object-cover z-10 filter opacity-0`,
+                    {
+                        'animate-un-blur opacity-1 scale-[1]':
+                            loaded && blur === 0,
+                        'animate-un-blur-with-blur opacity-1 scale-[1.1]':
+                            loaded && blur > 0,
+                        'scale-[1.2]': blur === 0,
+                        'scale-[1.3]': blur > 0,
+                    }
+                )}
                 onLoad={() => setLoaded(true)}
             />
-            {url && currentImage !== null && <UnsplashCredits {...images?.[currentImage]?.credit} />}
+            {url && currentImage !== null && (
+                <UnsplashCredits {...images?.[currentImage]?.credit} />
+            )}
         </div>
     );
 };

@@ -1,7 +1,7 @@
 {
     "name": "n-tab",
     "private": true,
-    "version": "2.0.1",
+    "version": "2.1.1",
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -51,6 +51,7 @@
         "tailwindcss": "^3.3.5",
         "typescript": "^5.2.2",
         "vite": "^4.5.0",
-        "vite-plugin-minify": "^1.5.2"
+        "vite-plugin-minify": "^1.5.2",
+        "vite-plugin-pwa": "^0.17.0"
     }
 }

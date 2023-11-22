@@ -2,38 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>New tab</title>
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="/icon.svg"
-        />
-        <link
-            rel="preload"
-            href="./theme.js"
-            as="script"
-            fetchpriority="high"
-        />
-        <script>
-            if ("serviceWorker" in navigator) {
-                window.addEventListener("load", () => {
-                    navigator.serviceWorker
-                        .register("/sw.js")
-                        .then(reg => console.info(`[${new Date().toISOString()}] [Service Worker]`, reg.scope))
-                        .catch(err => console.error(`[${new Date().toISOString()}] [Service Worker]`, err));
-                });
-            }
-        </script>
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     </head>
     <body class="bg-black">
         <div id="NTab"></div>
-        <script
-            type="module"
-            src="/src/main.tsx"
-        ></script>
+        <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>

@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { TimeContext } from "../context/TimeProvider";
+import { TimeContext } from '../context/TimeProvider';
 
-export function useTime(type: "absolute" | "zoned" = "zoned") {
+export function useTime(type: 'absolute' | 'zoned' = 'zoned') {
     return useContext(TimeContext)[type];
 }
