@@ -22,7 +22,7 @@
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
             "prettier --write",
-            "turbo lint --fix",
+            "eslint",
             "git add"
         ],
         "*.{json,md}": [
