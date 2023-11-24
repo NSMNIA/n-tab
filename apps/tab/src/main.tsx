@@ -4,9 +4,9 @@ import '@/styles/globals.css';
 import TimeProvider from './context/TimeProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('NTab')!).render(
-    <>
-        <TimeProvider>
-            <App />
-        </TimeProvider>
-    </>
+  <>
+    <TimeProvider>
+      <App />
+    </TimeProvider>
+  </>,
 );

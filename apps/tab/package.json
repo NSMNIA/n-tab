@@ -1,44 +1,44 @@
 {
-    "name": "n-tab",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "build-watch": "tsc && vite build --watch",
-        "preview": "vite preview"
-    },
-    "dependencies": {
-        "@hookform/resolvers": "^3.3.2",
-        "@radix-ui/react-dialog": "^1.0.5",
-        "@radix-ui/react-label": "^2.0.2",
-        "@radix-ui/react-select": "^2.0.0",
-        "@radix-ui/react-slider": "^1.1.2",
-        "@radix-ui/react-slot": "^1.0.2",
-        "@radix-ui/react-switch": "^1.0.3",
-        "class-variance-authority": "^0.7.0",
-        "clsx": "^2.0.0",
-        "colorthief": "^2.2.0",
-        "lucide-react": "^0.291.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-hook-form": "^7.45.4",
-        "tailwind-merge": "^1.14.0",
-        "tailwindcss-animate": "^1.0.7",
-        "thumbhash": "^0.1.1",
-        "zod": "^3.22.4"
-    },
-    "devDependencies": {
-        "@types/node": "^20.8.10",
-        "@types/react": "^18.2.33",
-        "@types/react-dom": "^18.2.14",
-        "@vitejs/plugin-react": "^4.1.0",
-        "autoprefixer": "^10.4.16",
-        "postcss": "^8.4.27",
-        "tailwindcss": "^3.3.5",
-        "typescript": "^5.2.2",
-        "vite": "^4.5.0",
-        "vite-plugin-minify": "^1.5.2",
-        "vite-plugin-pwa": "^0.17.0"
-    }
+  "name": "n-tab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build-watch": "tsc && vite build --watch",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "colorthief": "^2.2.0",
+    "lucide-react": "^0.291.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.4",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7",
+    "thumbhash": "^0.1.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "@vitejs/plugin-react": "^4.1.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0",
+    "vite-plugin-minify": "^1.5.2",
+    "vite-plugin-pwa": "^0.17.0"
+  }
 }

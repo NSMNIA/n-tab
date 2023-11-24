@@ -6,29 +6,29 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: './',
-    plugins: [
-        react(),
-        ViteMinifyPlugin({}),
-        VitePWA({
-            registerType: 'autoUpdate',
-            injectRegister: 'auto',
-            workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-            },
-            manifest: false,
-        }),
-    ],
-    build: {
-        emptyOutDir: true,
-        outDir: resolve(__dirname, '../../output/tab'),
+  base: './',
+  plugins: [
+    react(),
+    ViteMinifyPlugin({}),
+    VitePWA({
+      registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      },
+      manifest: false,
+    }),
+  ],
+  build: {
+    emptyOutDir: true,
+    outDir: resolve(__dirname, '../../output/tab'),
+  },
+  server: {
+    port: 3000,
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
     },
-    server: {
-        port: 3000,
-    },
-    resolve: {
-        alias: {
-            '@': resolve(__dirname, './src'),
-        },
-    },
+  },
 });
