@@ -25,3 +25,8 @@ dist-ssr
 *.sw?
 
 *.zip
+
+.turbo
+
+output/tab
+output/dynamic-colors

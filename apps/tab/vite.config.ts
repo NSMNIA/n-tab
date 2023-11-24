@@ -6,6 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: './',
     plugins: [
         react(),
         ViteMinifyPlugin({}),
@@ -20,7 +21,7 @@ export default defineConfig({
     ],
     build: {
         emptyOutDir: true,
-        outDir: resolve(__dirname, 'dist'),
+        outDir: resolve(__dirname, '../../output/tab'),
     },
     server: {
         port: 3000,
