@@ -25,5 +25,10 @@
         "browserSettings",
         "management",
         "topSites"
-    ]
+    ],
+    "background": {
+        "scripts": ["background/index.js"],
+        "type": "module",
+        "persistent": true
+    }
 }
