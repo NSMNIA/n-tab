@@ -12,5 +12,8 @@
     "@types/node": "^20.8.10",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/firefox-webext-browser": "^120.0.0"
   }
 }

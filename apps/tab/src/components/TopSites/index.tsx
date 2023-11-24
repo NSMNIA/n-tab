@@ -1,29 +1,18 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
 import { cn } from '@/lib/utils';
 import React, { useState, useEffect } from 'react';
 
-type TopSite = {
-  type: string;
-  url: string;
-  title: string;
-  favicon: string | undefined | null;
-};
-
 const TopSites: React.FC = () => {
   const showTopSites = typeof window !== 'undefined' && localStorage.getItem('showTopSites') === 'true';
-  const [topSites, setTopSites] = useState<TopSite[]>([]);
+  const [topSites, setTopSites] = useState<browser.topSites.MostVisitedURL[]>([]);
 
   useEffect(() => {
-    // @ts-ignore - Browser API (is available)
     if (typeof browser === 'undefined') return;
-    // @ts-ignore - Browser API (is available)
     browser.topSites
       .get({
         includeFavicon: true,
         limit: 5,
       })
-      .then((mostVisited: TopSite[]) => {
+      .then((mostVisited) => {
         setTopSites(mostVisited);
       });
   }, []);
