@@ -1,4 +1,4 @@
-<img src="n-tab/icon.svg" width="64"/>
+<img src="output/icon.svg" width="64"/>
 
 # NTab
 
