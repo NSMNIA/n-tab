@@ -10,6 +10,6 @@ export default defineConfig({
       formats: ['iife'],
       fileName: () => 'index.js',
     },
-    outDir: '../../output/background',
+    outDir: '../../output/content_script',
   },
 });

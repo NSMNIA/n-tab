@@ -1,4 +1,4 @@
-import { Color } from './types';
+import { Color } from '../background/src/types';
 
 export function rgba(color: string | number[]): Color | null | undefined {
   if (typeof color === 'string') {

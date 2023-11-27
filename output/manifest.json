@@ -22,5 +22,11 @@
     "scripts": ["background/index.js"],
     "type": "module",
     "persistent": true
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script/index.js"]
+    }
+  ]
 }
