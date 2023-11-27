@@ -1,7 +1,7 @@
 {
   "name": "n-tab",
   "private": true,
-  "version": "3.0.0",
+  "version": "2.2.0",
   "scripts": {
     "prepare": "husky install",
     "dev": "turbo dev --parallel --continue",
