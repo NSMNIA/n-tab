@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "NTab",
+  "short_name": "NTab",
+  "version": "2.2.0",
+  "description": "NTab is a new tab page that is simple and easy to use.",
+  "chrome_settings_overrides": {
+    "homepage": "tab/index.html"
+  },
+  "chrome_url_overrides": {
+    "newtab": "tab/index.html"
+  },
+  "web_accessible_resources": ["tab/index.html"],
+  "icons": {
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
+  },
+  "permissions": ["storage", "topSites"]
+}

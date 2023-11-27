@@ -25,3 +25,9 @@ dist-ssr
 *.sw?
 
 *.zip
+
+.turbo
+
+output/tab
+output/background
+output/content_script
