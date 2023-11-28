@@ -52,7 +52,7 @@ export const prefetchNewImage = async (images: Image[], currentImage: number) =>
     if (!img) return;
     const dominantColor = colorThief.getColor(img as HTMLImageElement);
     const pastelColor = generatePastelColor(dominantColor);
-    localStorage.setItem('primaryColor', pastelColor);
+    storage.set('primaryColor', pastelColor);
     const imageData = getImageData(img as HTMLImageElement);
     localStorage.setItem('thumbnail', imageData);
     localStorage.setItem('currentImage', nextImageNumber.toString());

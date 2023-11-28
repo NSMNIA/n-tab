@@ -14,7 +14,7 @@ const App = () => {
     })();
   }, []);
   return (
-    <div className='dark'>
+    <div className="p-4">
       <h1>Options</h1>
       {unsplashCategory && <p>Unsplash category: {unsplashCategory}</p>}
       <p>Show top sites: {showTopSites}</p>

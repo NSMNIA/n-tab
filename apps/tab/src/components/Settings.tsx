@@ -37,7 +37,7 @@ const Settings = () => {
       storage.remove('date');
       localStorage.removeItem('images');
       localStorage.removeItem('currentImage');
-      localStorage.removeItem('primaryColor');
+      storage.remove('primaryColor');
       await newImages();
     }
     window.location.reload();
