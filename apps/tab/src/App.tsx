@@ -1,10 +1,8 @@
 import Time from '@/components/Time';
-// import Search from "@/components/Search";
 import UnsplashImage from './components/Unsplash';
-import { lazy, useEffect } from 'react';
+import { useEffect } from 'react';
 import TopSites from './components/TopSites';
 import { storage } from './lib/storage';
-const Settings = lazy(() => import('./components/Settings'));
 
 const App = () => {
   useEffect(() => {
@@ -35,10 +33,6 @@ const App = () => {
       <UnsplashImage />
       <Time />
       <TopSites />
-      {/* <div className="absolute left-[50%] bottom-[5rem] translate-x-[-50%]">
-                <Search />
-            </div> */}
-      <Settings />
     </div>
   );
 };
