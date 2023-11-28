@@ -4,17 +4,7 @@ import './styles/globals.css';
 import { Switch } from './components/ui/switch';
 import { Label } from './components/ui/label';
 
-const categories = [
-  'abstract',
-  'nature',
-  'wallpapers',
-  'architecture',
-  'animals',
-  'city',
-  'food',
-  'sports',
-  'transport',
-].sort();
+const categories = ['abstract', 'nature', 'wallpapers', 'architecture', 'animals', 'city', 'food', 'sports'].sort();
 
 const App = () => {
   const [unsplashCategory, setUnsplashCategory] = useState<string | null>(null);
@@ -36,8 +26,8 @@ const App = () => {
 
   return (
     <div className="p-4 w-[300px] flex flex-col gap-5 text-lg">
-      <h1 className="font-bold text-lg">Options</h1>
-      <div className="flex flex-col gap-2">
+      <h1 className="font-bold text-lg">N-Tab options</h1>
+      <div className="flex flex-col gap-3">
         <Label htmlFor="unsplash" className="font-bold">
           Background image category
         </Label>
@@ -61,7 +51,7 @@ const App = () => {
         </select>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <Label className="font-bold">Top sites</Label>
         <div className="flex items-center space-x-2">
           <Switch
