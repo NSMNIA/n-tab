@@ -1,23 +1,26 @@
+import { storage } from '@/lib/storage';
 import { cn } from '@/lib/utils';
 import React, { useState, useEffect } from 'react';
 
 const TopSites: React.FC = () => {
-  const showTopSites = typeof window !== 'undefined' && localStorage.getItem('showTopSites') === 'true';
   const [topSites, setTopSites] = useState<browser.topSites.MostVisitedURL[]>([]);
 
   useEffect(() => {
-    if (typeof browser === 'undefined') return;
-    browser.topSites
-      .get({
-        includeFavicon: true,
-        limit: 5,
-      })
-      .then((mostVisited) => {
-        setTopSites(mostVisited);
-      });
+    (async () => {
+      const showTopSites = ((await storage.get('showTopSites')) as boolean) ?? false;
+      if (!showTopSites) return;
+      browser.topSites
+        .get({
+          includeFavicon: true,
+          limit: 5,
+        })
+        .then((mostVisited) => {
+          setTopSites(mostVisited);
+        });
+    })();
   }, []);
 
-  if (!showTopSites) return null;
+  if (topSites.length === 0) return null;
 
   return (
     <div className="absolute left-[50%] bottom-[20px] translate-x-[-50%] text-center flex gap-3 p-4 z-30 items-center">

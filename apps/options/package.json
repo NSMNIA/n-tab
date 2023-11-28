@@ -1,11 +1,13 @@
 {
-  "name": "n-tab",
+  "name": "options",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "build-watch": "tsc && vite build --watch",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,17 +31,16 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/firefox-webext-browser": "^120.0.0",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.1.0",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "vite-plugin-minify": "^1.5.2",
-    "vite-plugin-pwa": "^0.17.0",
-    "@types/firefox-webext-browser": "^120.0.0"
+    "vite-plugin-minify": "^1.5.2"
   }
 }

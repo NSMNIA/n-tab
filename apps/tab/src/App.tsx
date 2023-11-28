@@ -1,24 +1,31 @@
 import Time from '@/components/Time';
-// import Search from "@/components/Search";
 import UnsplashImage from './components/Unsplash';
-import { lazy, useEffect } from 'react';
+import { useEffect } from 'react';
 import TopSites from './components/TopSites';
-const Settings = lazy(() => import('./components/Settings'));
+import { storage } from './lib/storage';
 
 const App = () => {
   useEffect(() => {
-    if (!localStorage.getItem('date')) {
-      localStorage.setItem('date', new Date().toISOString());
-    }
-    if (!localStorage.getItem('unsplash')) {
-      localStorage.setItem('unsplash', 'abstract');
-    }
+    (async () => {
+      const unsplashCategory = await storage.get('unsplashCategory');
+      if (!unsplashCategory) {
+        storage.set('unsplashCategory', 'abstract');
+      }
+      const date = await storage.get('date');
+      if (!date) {
+        storage.set('date', new Date().toISOString());
+      }
+    })();
   }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    const primaryColor = localStorage.getItem('primaryColor');
-    if (primaryColor) root.style.setProperty('--primary', primaryColor);
+    (async () => {
+      const primaryColor = (await storage.get('primaryColor')) as string;
+      if (primaryColor) {
+        root.style.setProperty('--primary', primaryColor);
+      }
+    })();
   }, []);
 
   return (
@@ -26,10 +33,6 @@ const App = () => {
       <UnsplashImage />
       <Time />
       <TopSites />
-      {/* <div className="absolute left-[50%] bottom-[5rem] translate-x-[-50%]">
-                <Search />
-            </div> */}
-      <Settings />
     </div>
   );
 };

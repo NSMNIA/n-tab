@@ -17,5 +17,16 @@
     "96": "icons/96.png",
     "128": "icons/128.png"
   },
-  "permissions": ["storage", "topSites"]
+  "permissions": ["storage", "topSites"],
+  "browser_action": {
+    "default_popup": "options/index.html",
+    "default_title": "__MSG_extensionName__",
+    "browser_style": true,
+    "default_icon": {
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "96": "icons/96.png",
+      "128": "icons/128.png"
+    }
+  }
 }
