@@ -18,12 +18,8 @@
     "128": "icons/128.png"
   },
   "permissions": ["storage", "topSites"],
-  "options_ui": {
-    "page": "options/index.html",
-    "browser_style": true
-  },
   "browser_action": {
-    "default_popup": "popup.html",
+    "default_popup": "options/index.html",
     "default_title": "__MSG_extensionName__",
     "browser_style": true,
     "default_icon": {
