@@ -10,6 +10,7 @@ import { newImages } from './Unsplash/utils/images';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Switch } from './ui/switch';
 import { Label } from './ui/label';
+import { storage } from '@/lib/storage';
 
 const Settings = () => {
   const formSchema = z.object({
@@ -28,12 +29,13 @@ const Settings = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const unsplashCategory = await storage.get('unsplashCategory');
     localStorage.setItem('blur', values.blur![0].toString());
     localStorage.setItem('showTopSites', values.showTopSites?.toString() ?? 'false');
-    if (values.unsplash !== localStorage.getItem('unsplash')) {
-      localStorage.setItem('unsplash', values.unsplash ?? 'abstract');
+    if (values.unsplash !== unsplashCategory) {
+      storage.set('unsplashCategory', values.unsplash ?? 'abstract');
+      storage.remove('date');
       localStorage.removeItem('images');
-      localStorage.removeItem('date');
       localStorage.removeItem('currentImage');
       localStorage.removeItem('primaryColor');
       await newImages();

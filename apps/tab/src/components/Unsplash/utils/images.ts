@@ -3,9 +3,10 @@ import { buildLink, fetchImages, type Image } from './api';
 import ColorThief from 'colorthief';
 import { rgbaToThumbHash, thumbHashToDataURL } from 'thumbhash';
 import { generatePastelColor } from './color';
+import { storage } from '@/lib/storage';
 
 export const newImages = async () => {
-  const query = localStorage.getItem('unsplash') ?? undefined;
+  const query = ((await storage.get('unsplashCategory')) as string) ?? undefined;
   await fetchImages(query)
     .then((images) => {
       localStorage.setItem('images', JSON.stringify(images));

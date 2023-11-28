@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import UnsplashCredits from './credits';
 import { fallbackImages } from '@/fallbackImages';
 import { newImages, prefetchNewImage } from './utils/images';
+import { storage } from '@/lib/storage';
 
 const UnsplashImage = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -24,20 +25,22 @@ const UnsplashImage = () => {
   }, [loaded]);
 
   useEffect(() => {
-    if (!localStorage.getItem('images')) {
-      newImages();
-    }
-    const date = new Date(localStorage.getItem('date')!);
-    const today = new Date();
-    if (date.getDate() !== today.getDate()) {
-      localStorage.setItem('date', today.toISOString());
-      newImages();
-    } else {
-      const images = JSON.parse(localStorage.getItem('images') ?? '[]');
-      if (images.length === 0) {
+    (async () => {
+      if (!localStorage.getItem('images')) {
         newImages();
       }
-    }
+      const date = (await storage.get('date')) as string;
+      const today = new Date();
+      if (new Date(date).getDate() !== today.getDate()) {
+        storage.set('date', today.toISOString());
+        newImages();
+      } else {
+        const images = JSON.parse(localStorage.getItem('images') ?? '[]');
+        if (images.length === 0) {
+          newImages();
+        }
+      }
+    })();
   }, []);
 
   useEffect(() => {
