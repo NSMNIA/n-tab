@@ -3,6 +3,7 @@ import UnsplashImage from './components/Unsplash';
 import { useEffect } from 'react';
 import TopSites from './components/TopSites';
 import { storage } from './lib/storage';
+import GitHub from './components/GitHub';
 
 const App = () => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const App = () => {
 
   return (
     <div className="relative h-screen w-screen bg-black">
+      <GitHub />
       <UnsplashImage />
       <Time />
       <TopSites />
